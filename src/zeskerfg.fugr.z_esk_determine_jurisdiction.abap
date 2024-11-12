@@ -1,0 +1,23 @@
+FUNCTION Z_ESK_DETERMINE_JURISDICTION .
+*"--------------------------------------------------------------------
+*"*"Local Interface:
+*"  IMPORTING
+*"     VALUE(LOCATION_DATA) LIKE  COM_JUR STRUCTURE  COM_JUR
+*"     VALUE(DEST) LIKE  V_TXD_E-RFCDEST
+*"  EXPORTING
+*"     VALUE(LOCATION_ERR) LIKE  COM_ERR STRUCTURE  COM_ERR
+*"  TABLES
+*"      LOCATION_RESULTS STRUCTURE  COM_JUR
+*"--------------------------------------------------------------------
+*{   INSERT         EC5K900498                                        1
+
+CALL FUNCTION 'RFC_DETERMINE_JURISDICTION' DESTINATION DEST
+  EXPORTING
+     LOCATION_DATA = LOCATION_DATA
+  IMPORTING
+     LOCATION_ERR = LOCATION_ERR
+  TABLES
+     LOCATION_RESULTS = LOCATION_RESULTS.
+
+*}   INSERT
+ENDFUNCTION.
